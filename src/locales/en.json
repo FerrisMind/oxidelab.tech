@@ -104,7 +104,7 @@
     }
   },
   "systemRequirements": {
-    "title": "Oxide Lab System Requirements",
+    "title": "System Requirements",
     "minimal": {
       "title": "Minimum requirements:",
       "os": "OS: Windows 10/11 (x64)",

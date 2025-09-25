@@ -1,5 +1,4 @@
-"use server";
-
+// Client-side completion function for static export
 type CompleteTextInput = {
   incompleteText: string;
 };
@@ -21,7 +20,7 @@ export async function getCompletion(input: CompleteTextInput) {
 
     return { success: true, completedText: mockCompletion };
   } catch (error) {
-    console.error("Error in getCompletion server action:", error);
+    console.error("Error in getCompletion:", error);
     if (error instanceof Error) {
       return { success: false, error: error.message };
     }

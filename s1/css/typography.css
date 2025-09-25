@@ -1,0 +1,218 @@
+/* Typography styles */
+.font-body {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: hsl(var(--foreground));
+}
+
+h1 {
+  font-size: var(--size-4xl);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--size-3xl);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--size-2xl);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--size-xl);
+  font-weight: 600;
+}
+
+h5 {
+  font-size: var(--size-lg);
+  font-weight: 600;
+}
+
+h6 {
+  font-size: var(--size-base);
+  font-weight: 600;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: var(--space-4);
+  line-height: 1.6;
+  color: hsl(var(--foreground));
+}
+
+/* Links */
+a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: hsl(var(--accent));
+}
+
+/* Lists */
+ul,
+ol {
+  margin-bottom: var(--space-4);
+}
+
+li {
+  margin-bottom: var(--space-2);
+}
+
+/* Code */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: hsl(var(--muted));
+  padding: 0.125rem 0.25rem;
+  border-radius: calc(var(--radius) / 2);
+}
+
+pre {
+  font-family: var(--font-mono);
+  background-color: hsl(var(--muted));
+  padding: var(--space-4);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin-bottom: var(--space-4);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid hsl(var(--accent));
+  padding-left: var(--space-4);
+  margin: var(--space-4) 0;
+  font-style: italic;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Small text */
+small {
+  font-size: var(--size-sm);
+  color: hsl(var(--muted-foreground));
+}
+
+/* Text utilities */
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+.text-xs {
+  font-size: var(--size-xs);
+}
+.text-sm {
+  font-size: var(--size-sm);
+}
+.text-base {
+  font-size: var(--size-base);
+}
+.text-lg {
+  font-size: var(--size-lg);
+}
+.text-xl {
+  font-size: var(--size-xl);
+}
+.text-2xl {
+  font-size: var(--size-2xl);
+}
+.text-3xl {
+  font-size: var(--size-3xl);
+}
+.text-4xl {
+  font-size: var(--size-4xl);
+}
+.text-5xl {
+  font-size: var(--size-5xl);
+}
+.text-6xl {
+  font-size: var(--size-6xl);
+}
+
+.font-thin {
+  font-weight: 100;
+}
+.font-light {
+  font-weight: 300;
+}
+.font-normal {
+  font-weight: 400;
+}
+.font-medium {
+  font-weight: 500;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-extrabold {
+  font-weight: 800;
+}
+.font-black {
+  font-weight: 900;
+}
+
+.leading-tight {
+  line-height: 1.25;
+}
+.leading-snug {
+  line-height: 1.375;
+}
+.leading-normal {
+  line-height: 1.5;
+}
+.leading-relaxed {
+  line-height: 1.625;
+}
+.leading-loose {
+  line-height: 2;
+}
+
+.tracking-tighter {
+  letter-spacing: -0.05em;
+}
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+.tracking-normal {
+  letter-spacing: 0em;
+}
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+.tracking-widest {
+  letter-spacing: 0.1em;
+}

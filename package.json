@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "node deploy.js"
   },
   "dependencies": {
     "@genkit-ai/googleai": "^1.19.3",

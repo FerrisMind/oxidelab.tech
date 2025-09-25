@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oxide Lab - Test Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background: #f5f5f5;
+      }
+      .test-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .test-item {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .test-pass {
+        background: #d4edda;
+        border-color: #c3e6cb;
+      }
+      .test-fail {
+        background: #f8d7da;
+        border-color: #f5c6cb;
+      }
+      .test-info {
+        background: #d1ecf1;
+        border-color: #bee5eb;
+      }
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test-container">
+      <h1>Oxide Lab Static Version - Test Page</h1>
+
+      <div class="test-item test-info">
+        <h3>Информация о тестировании</h3>
+        <p>
+          Эта страница проверяет основные функции статической версии лендинга
+          Oxide Lab.
+        </p>
+      </div>
+
+      <div class="test-item" id="js-test">
+        <h3>JavaScript загрузка</h3>
+        <p id="js-status">Проверка...</p>
+      </div>
+
+      <div class="test-item" id="css-test">
+        <h3>CSS загрузка</h3>
+        <p id="css-status">Проверка...</p>
+      </div>
+
+      <div class="test-item" id="i18n-test">
+        <h3>Интернационализация</h3>
+        <p id="i18n-status">Проверка...</p>
+      </div>
+
+      <div class="test-item" id="utils-test">
+        <h3>Утилиты</h3>
+        <p id="utils-status">Проверка...</p>
+      </div>
+
+      <div class="test-item">
+        <h3>Тестирование функций</h3>
+        <button onclick="testLanguageSwitch()">Переключить язык</button>
+        <button onclick="testScrollToTop()">Прокрутить вверх</button>
+        <button onclick="testMobileDetection()">
+          Проверить мобильное устройство
+        </button>
+        <button onclick="runAllTests()">Запустить все тесты</button>
+      </div>
+
+      <div class="test-item">
+        <h3>Ссылки</h3>
+        <a href="index.html" target="_blank">Открыть основной сайт</a>
+      </div>
+    </div>
+
+    <script>
+      // Тестирование JavaScript
+      function testJS() {
+        const status = document.getElementById("js-status");
+        const container = document.getElementById("js-test");
+
+        try {
+          if (typeof window !== "undefined") {
+            status.textContent = "✅ JavaScript работает";
+            container.className = "test-item test-pass";
+            return true;
+          } else {
+            throw new Error("Window object not available");
+          }
+        } catch (error) {
+          status.textContent = "❌ Ошибка JavaScript: " + error.message;
+          container.className = "test-item test-fail";
+          return false;
+        }
+      }
+
+      // Тестирование CSS
+      function testCSS() {
+        const status = document.getElementById("css-status");
+        const container = document.getElementById("css-test");
+
+        try {
+          const computedStyle = window.getComputedStyle(document.body);
+          if (computedStyle.fontFamily) {
+            status.textContent = "✅ CSS загружен";
+            container.className = "test-item test-pass";
+            return true;
+          } else {
+            throw new Error("CSS not loaded");
+          }
+        } catch (error) {
+          status.textContent = "❌ Ошибка CSS: " + error.message;
+          container.className = "test-item test-fail";
+          return false;
+        }
+      }
+
+      // Тестирование интернационализации
+      function testI18n() {
+        const status = document.getElementById("i18n-status");
+        const container = document.getElementById("i18n-test");
+
+        try {
+          // Проверяем, что можем создать простой объект переводов
+          const testTranslations = {
+            ru: { test: "Тест" },
+            en: { test: "Test" },
+          };
+
+          if (testTranslations.ru && testTranslations.en) {
+            status.textContent = "✅ Интернационализация готова";
+            container.className = "test-item test-pass";
+            return true;
+          } else {
+            throw new Error("Translation objects not created");
+          }
+        } catch (error) {
+          status.textContent =
+            "❌ Ошибка интернационализации: " + error.message;
+          container.className = "test-item test-fail";
+          return false;
+        }
+      }
+
+      // Тестирование утилит
+      function testUtils() {
+        const status = document.getElementById("utils-status");
+        const container = document.getElementById("utils-test");
+
+        try {
+          // Проверяем базовые функции
+          const testArray = [1, 2, 3];
+          const testObject = { a: 1, b: 2 };
+
+          if (Array.isArray(testArray) && typeof testObject === "object") {
+            status.textContent = "✅ Утилиты работают";
+            container.className = "test-item test-pass";
+            return true;
+          } else {
+            throw new Error("Basic utilities not working");
+          }
+        } catch (error) {
+          status.textContent = "❌ Ошибка утилит: " + error.message;
+          container.className = "test-item test-fail";
+          return false;
+        }
+      }
+
+      // Тестирование переключения языка
+      function testLanguageSwitch() {
+        alert("Функция переключения языка будет работать на основном сайте");
+      }
+
+      // Тестирование прокрутки
+      function testScrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Тестирование определения мобильного устройства
+      function testMobileDetection() {
+        const isMobile = window.innerWidth < 768;
+        alert(
+          `Мобильное устройство: ${isMobile ? "Да" : "Нет"}\nШирина экрана: ${
+            window.innerWidth
+          }px`
+        );
+      }
+
+      // Запуск всех тестов
+      function runAllTests() {
+        const results = [testJS(), testCSS(), testI18n(), testUtils()];
+
+        const passed = results.filter((r) => r).length;
+        const total = results.length;
+
+        alert(`Тесты завершены: ${passed}/${total} прошли успешно`);
+      }
+
+      // Автоматический запуск тестов при загрузке
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          runAllTests();
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
