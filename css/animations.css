@@ -1,0 +1,22 @@
+/* Animation styles - DISABLED */
+
+/* Animation utility classes - DISABLED */
+
+/* Hover animations - DISABLED */
+
+/* Staggered animations - DISABLED */
+
+/* Loading states - DISABLED */
+
+/* Smooth transitions - DISABLED */
+
+/* Global animation disable */
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+/* Reduced motion support - DISABLED */
