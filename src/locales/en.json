@@ -1,0 +1,136 @@
+{
+  "direction": "ltr",
+  "common": {
+    "localeNames": {
+      "en": "English",
+      "ru": "Русский",
+      "pt-BR": "Português (Brasil)"
+    }
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "ariaLabel": {
+      "one": "The interface is available in {count} language",
+      "other": "The interface is available in {count} languages"
+    }
+  },
+  "themeToggle": {
+    "toggle": "Switch theme",
+    "light": "Switch to light theme",
+    "dark": "Switch to dark theme"
+  },
+  "header": {
+    "title": "Oxide Lab",
+    "subtitle": "Private, local AI chat",
+    "homeLinkLabel": "Go to the home page"
+  },
+  "hero": {
+    "badge": "Private • Local • Powerful",
+    "title": "Oxide Lab",
+    "subtitle": "Your Private AI Laboratory",
+    "description": "Experience the power of artificial intelligence without compromising your privacy. Run advanced AI models locally on your machine — no cloud, no tracking, complete control.",
+    "downloadCta": "Download Now",
+    "githubCta": "View on GitHub",
+    "githubAria": "Open Oxide Lab repository on GitHub",
+    "statsTagline": "100% Open Source • Zero Data Collection • Unlimited Possibilities",
+    "scrollHint": "Learn more below"
+  },
+  "features": {
+    "title": "Revolutionary Privacy",
+    "subtitle": "Built on the principle that your data belongs to you — and only you.",
+    "items": [
+      {
+        "title": "100% Private",
+        "description": "All processing happens on your device. Your conversations never leave your machine",
+        "color": "#3B82F6"
+      },
+      {
+        "title": "Local AI Processing",
+        "description": "Harness the power of state-of-the-art language models running entirely offline",
+        "color": "#F97316"
+      },
+      {
+        "title": "Zero Data Collection",
+        "description": "No analytics, no telemetry, no tracking. Your privacy is not negotiable",
+        "color": "#EF4444"
+      },
+      {
+        "title": "Lightning Fast",
+        "description": "Optimized for performance with instant responses and seamless interactions",
+        "color": "#2563EB"
+      },
+      {
+        "title": "Fully Offline",
+        "description": "Work without an internet connection. Perfect for sensitive environments",
+        "color": "#10B981"
+      },
+      {
+        "title": "Open Source",
+        "description": "Transparent, auditable, and community-driven. Fork it, improve it, own it",
+        "color": "#3B82F6"
+      }
+    ]
+  },
+  "demo": {
+    "title": "Experience the Future",
+    "subtitle": "A seamless interface designed for the modern AI experience.",
+    "browserLabel": "Oxide Lab v1.0",
+    "messages": {
+      "assistantGreeting": "How can I help you analyze your data today?",
+      "userRequest": "Summarize this document and extract key insights.",
+      "assistantSummaryTitle": "Here's a comprehensive analysis:",
+      "metrics": [
+        "Processing complete • 100% local",
+        "Zero data transmitted • Fully private",
+        "Results ready • Your eyes only"
+      ]
+    },
+    "floatingLockLabel": "Secure interactions",
+    "floatingCpuLabel": "Optimized performance"
+  },
+  "privacy": {
+    "title": "Privacy by Design",
+    "subtitle": "In a world where data is constantly harvested, Oxide Lab takes a different approach. We believe privacy is not a feature — it's a fundamental right.",
+    "items": [
+      {
+        "title": "No Cloud Dependencies",
+        "description": "Everything runs on your hardware. No servers, no middlemen, no compromises",
+        "color": "#3B82F6"
+      },
+      {
+        "title": "Encrypted at Rest",
+        "description": "Your conversations and data are encrypted with industry-standard algorithms",
+        "color": "#10B981"
+      },
+      {
+        "title": "Open Source Transparency",
+        "description": "Every line of code is auditable. No hidden backdoors, no secret telemetry",
+        "color": "#F97316"
+      },
+      {
+        "title": "Complete Ownership",
+        "description": "Your data, your models, your rules. Export, delete, or modify anytime",
+        "color": "#2563EB"
+      }
+    ],
+    "callToAction": "Read Our Privacy Manifesto"
+  },
+  "footer": {
+    "resourcesTitle": "Resources",
+    "resources": [
+      { "label": "Documentation (coming soon...)", "href": "#" },
+      { "label": "Getting Started (coming soon...)", "href": "#" },
+      { "label": "API Reference (coming soon...)", "href": "#" },
+      { "label": "Community (coming soon...)", "href": "#" }
+    ],
+    "technicalTitle": "Technical",
+    "technical": ["Built with Rust", "Powered by GGUF", "MIT Licensed", "Self-Hosted"],
+    "social": {
+      "github": "GitHub",
+      "community": "Community",
+      "website": "Website"
+    },
+    "privacyLine": "100% Open Source • No Tracking • Your Data, Your Control",
+    "copyright": "{year} FerrisMind. Built with ⚙️ for privacy"
+  }
+}
