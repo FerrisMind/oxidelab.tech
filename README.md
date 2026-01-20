@@ -1,166 +1,47 @@
-# 🚀 Modern Landing Page
+# Svelte + TS + Vite
 
-A modern landing page built with Next.js 15 using cutting-edge technologies to create an impressive user experience.
+This template should help get you started developing with Svelte and TypeScript in Vite.
 
-## ✨ Features
+## Recommended IDE Setup
 
-- **⚡ Next.js 15** with Turbopack for lightning-fast development
-- **🎨 Modern UI** with Tailwind CSS and Radix UI components
-- **🌙 Dark/Light theme** with smooth transitions
-- **🌍 Internationalization** with localization support
-- **🎭 Animations** powered by Framer Motion for a lively interface
-- **📱 Responsive design** for all devices
-- **🔒 TypeScript** for code reliability
-- **🎯 SEO optimization** out of the box
+[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
 
-## 🛠 Tech Stack
+## Need an official Svelte framework?
 
-### Core
-- **Next.js 15** - React framework with App Router
-- **React 19** - Latest React version
-- **TypeScript** - Typed JavaScript
+Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
 
-### UI/UX
-- **Tailwind CSS** - Utility-first CSS framework
-- **Radix UI** - Accessible components
-- **Framer Motion** - Animations and transitions
-- **Phosphor Icons** - Modern icons
-- **React Three Fiber** - 3D graphics
+## Technical considerations
 
-### Additional Features
-- **Better Auth** - Authentication
-- **Drizzle ORM** - Database
-- **React Hook Form** - Forms
-- **Zod** - Schema validation
-- **Stripe** - Payments
+**Why use this over SvelteKit?**
 
-## 🚀 Quick Start
+- It brings its own routing solution which might not be preferable for some users.
+- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
 
-### Prerequisites
-- Node.js 18+ 
-- Bun (recommended) or npm/yarn
+This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
 
-### Installation
+Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
 
-```bash
-# Clone the repository
-git clone <repository-url>
-cd app
+**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
 
-# Install dependencies
-bun install
+Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
 
-# Start development server
-bun dev
+**Why include `.vscode/extensions.json`?**
+
+Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+
+**Why enable `allowJs` in the TS template?**
+
+While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
+
+**Why is HMR not preserving my local component state?**
+
+HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+
+If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+
+```ts
+// store.ts
+// An extremely simple external store
+import { writable } from 'svelte/store'
+export default writable(0)
 ```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 📁 Project Structure
-
-```
-src/
-├── app/                 # App Router pages
-├── components/          # Reusable components
-│   └── ui/             # UI components
-├── contexts/           # React contexts
-├── hooks/              # Custom hooks
-├── lib/                # Utilities and configuration
-├── locales/            # Localization files
-├── styles/             # Global styles
-└── visual-edits/       # Visual editing
-```
-
-## 🎨 Customization
-
-### Themes
-The project supports dark and light themes. Settings are located in:
-- `src/components/ThemeToggle.tsx`
-- `tailwind.config.js`
-
-### Localization
-Add new languages in:
-- `src/locales/` - translation files
-- `src/components/ui/language-selector.tsx` - language selector
-
-### Components
-UI components are located in `src/components/ui/` and built with Radix UI and Tailwind CSS.
-
-## 📦 Scripts
-
-```bash
-# Development with Turbopack
-bun dev
-
-# Build for production
-bun build
-
-# Start production server
-bun start
-
-# Linting
-bun lint
-```
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Connect your repository to Vercel
-2. Configure environment variables
-3. Deploy automatically
-
-### Other Platforms
-The project is compatible with any Node.js hosting platform:
-- Netlify
-- Railway
-- DigitalOcean App Platform
-
-## 🔧 Configuration
-
-### Environment Variables
-Create `.env.local`:
-
-```env
-# Database
-DATABASE_URL=
-
-# Authentication
-BETTER_AUTH_SECRET=
-BETTER_AUTH_URL=
-
-# Stripe (optional)
-STRIPE_SECRET_KEY=
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-```
-
-### Database Setup
-```bash
-# Generate migrations
-bun db:generate
-
-# Apply migrations
-bun db:migrate
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## 🆘 Support
-
-If you have questions or issues:
-- Create an Issue in the repository
-- Check the Next.js documentation
-- Reach out to the community
-
----
-
-Made with ❤️ and modern technologies
