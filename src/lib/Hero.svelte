@@ -1,5 +1,9 @@
 <script lang="ts">
   import { i18n } from './i18n.svelte';
+  import { Button } from './components/ui/button';
+  import { Badge } from './components/ui/badge';
+  import DownloadSimple from 'phosphor-svelte/lib/DownloadSimple';
+  import GithubLogo from 'phosphor-svelte/lib/GithubLogo';
 
   let visible = $state(false);
   
@@ -11,309 +15,58 @@
   });
 </script>
 
-<section class="hero" id="hero">
-  <div class="hero-background">
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
-    <div class="gradient-orb orb-3"></div>
-    <div class="grid-pattern"></div>
+<section class="relative min-h-screen flex flex-col items-center justify-center py-24 px-4 overflow-hidden" id="hero">
+  <!-- Background -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute w-[600px] h-[600px] rounded-full blur-[100px] opacity-50 bg-red-500/25 -top-[200px] -right-[100px] animate-pulse"></div>
+    <div class="absolute w-[400px] h-[400px] rounded-full blur-[100px] opacity-50 bg-blue-500/20 -bottom-[100px] -left-[100px] animate-pulse"></div>
+    <div class="absolute w-[300px] h-[300px] rounded-full blur-[100px] opacity-50 bg-orange-500/15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(238,44,11,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(238,44,11,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_0%,transparent_70%)]"></div>
   </div>
   
-  <div class="container hero-content" class:visible>
-    <div class="badge">
-      <span class="badge-dot"></span>
+  <!-- Content -->
+  <div 
+    class="text-center z-10 max-w-4xl mx-auto transition-all duration-700 ease-out {visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}"
+  >
+    <Badge variant="outline" class="mb-6 gap-2 px-4 py-1.5 text-sm">
+      <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
       {i18n.t.hero.badge}
-    </div>
+    </Badge>
     
-    <h1 class="hero-title">
-      {i18n.t.hero.title}<br/>
-      <span class="glow-text">{i18n.t.hero.titleGlow}</span>
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight">
+      {i18n.t.hero.title}<br class="md:hidden" />
+      <span class="brand-gradient">{i18n.t.hero.titleGlow}</span>
     </h1>
     
-    <p class="hero-description">
+    <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
       {i18n.t.hero.description}
     </p>
     
-    <div class="hero-actions">
-      <a href="#download" class="btn btn-primary btn-lg">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-          <polyline points="7 10 12 15 17 10"/>
-          <line x1="12" y1="15" x2="12" y2="3"/>
-        </svg>
+    <div class="flex gap-4 justify-center flex-wrap mb-12">
+      <Button href="#download" size="lg" class="gap-2">
+        <DownloadSimple size={20} weight="bold" />
         {i18n.t.hero.ctaDownload}
-      </a>
-      <a href="https://github.com/FerrisMind/Oxide-Lab" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
+      </Button>
+      <Button href="https://github.com/FerrisMind/Oxide-Lab" variant="outline" size="lg" class="gap-2">
+        <GithubLogo size={20} weight="fill" />
         {i18n.t.hero.ctaGithub}
-      </a>
-    </div>
-    
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-value">100%</span>
-        <span class="stat-label">{i18n.t.hero.statLocal}</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-value">10+</span>
-        <span class="stat-label">{i18n.t.hero.statModels}</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-value">0</span>
-        <span class="stat-label">{i18n.t.hero.statCloud}</span>
-      </div>
+      </Button>
     </div>
   </div>
   
-  <div class="hero-image-wrapper" class:visible>
-    <div class="hero-image-glow"></div>
-    <div class="hero-image">
-      <div class="app-window">
-        <div class="window-preview">
-          <img 
-            src="https://raw.githubusercontent.com/FerrisMind/Oxide-Lab/main/.github/assets/screenshots/chat-dark.png" 
-            alt="Oxide Lab Interface" 
-            class="app-screenshot"
-          />
-        </div>
+  <!-- App Screenshot -->
+  <div 
+    class="relative mt-16 z-10 transition-all duration-1000 ease-out delay-300 {visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}"
+  >
+    <div class="absolute -inset-12 bg-gradient-radial from-red-500/20 to-transparent pointer-events-none"></div>
+    <div class="relative bg-card/95 border border-border rounded-2xl overflow-hidden shadow-2xl max-w-[1128px] w-[90vw]">
+      <div class="bg-background">
+        <img 
+          src="https://raw.githubusercontent.com/FerrisMind/Oxide-Lab/main/.github/assets/screenshots/chat-dark.png" 
+          alt="Oxide Lab Interface" 
+          class="w-full h-auto block"
+        />
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: calc(80px + var(--space-3xl)) var(--space-lg) var(--space-3xl);
-    overflow: hidden;
-  }
-  
-  .hero-background {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-  
-  .gradient-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.5;
-  }
-  
-  .orb-1 {
-    width: 600px;
-    height: 600px;
-    background: rgba(238, 44, 11, 0.25);
-    top: -200px;
-    right: -100px;
-    animation: float 8s ease-in-out infinite;
-  }
-  
-  .orb-2 {
-    width: 400px;
-    height: 400px;
-    background: rgba(30, 136, 229, 0.2);
-    bottom: -100px;
-    left: -100px;
-    animation: float 10s ease-in-out infinite reverse;
-  }
-  
-  .orb-3 {
-    width: 300px;
-    height: 300px;
-    background: rgba(255, 127, 4, 0.15);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: float 12s ease-in-out infinite;
-  }
-  
-  .grid-pattern {
-    position: absolute;
-    inset: 0;
-    background-image: 
-      linear-gradient(rgba(238, 44, 11, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(238, 44, 11, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
-  }
-  
-  .hero-content {
-    text-align: center;
-    z-index: 1;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  .hero-content.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-xl);
-  }
-  
-  .badge-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--color-success);
-    border-radius: 50%;
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-  
-  .hero-title {
-    margin-bottom: var(--space-lg);
-    line-height: 1.1;
-  }
-  
-  .hero-description {
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin: 0 auto var(--space-2xl);
-    line-height: 1.7;
-  }
-  
-  .hero-actions {
-    display: flex;
-    gap: var(--space-md);
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: var(--space-3xl);
-  }
-  
-  .btn-lg {
-    padding: var(--space-lg) var(--space-2xl);
-    font-size: 1.1rem;
-  }
-  
-  .icon {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .hero-stats {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-xl);
-    flex-wrap: wrap;
-  }
-  
-  .stat {
-    text-align: center;
-  }
-  
-  .stat-value {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--color-foreground);
-    line-height: 1;
-  }
-  
-  .stat-label {
-    font-size: 0.875rem;
-    color: var(--color-muted-foreground);
-  }
-  
-  .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: var(--color-border);
-  }
-  
-  .hero-image-wrapper {
-    position: relative;
-    margin-top: var(--space-3xl);
-    z-index: 1;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
-  }
-  
-  .hero-image-wrapper.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .hero-image-glow {
-    position: absolute;
-    inset: -50px;
-    background: radial-gradient(ellipse at center, rgba(238, 44, 11, 0.2) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  
-  .hero-image {
-    position: relative;
-  }
-  
-  .app-window {
-    background: rgba(26, 26, 46, 0.95);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-2xl);
-    overflow: hidden;
-    box-shadow: var(--shadow-xl), 0 0 80px rgba(238, 44, 11, 0.15);
-    max-width: 1128px;
-    width: 90vw;
-  }
-  
-  .window-preview {
-    background: #0f0f1a;
-    line-height: 0;
-  }
-  
-  .app-screenshot {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  @keyframes blink {
-    50% { opacity: 0; }
-  }
-  
-  @media (max-width: 768px) {
-    .hero {
-      padding-top: calc(60px + var(--space-2xl));
-    }
-    
-    .hero-description {
-      font-size: 1.1rem;
-    }
-    
-    .hero-actions {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .btn-lg {
-      width: 100%;
-      max-width: 300px;
-    }
-    
-    .stat-divider {
-      display: none;
-    }
-    
-    .hero-stats {
-      gap: var(--space-2xl);
-    }
-  }
-</style>
