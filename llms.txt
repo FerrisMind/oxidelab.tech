@@ -1,0 +1,61 @@
+# Oxide Lab - LLMs.txt
+# https://llmstxt.org/
+
+> Oxide Lab is a local-first AI chat application that prioritizes privacy and security.
+
+Oxide Lab combines the power of modern large language models with complete privacy. No cloud dependencies, no data collection, no compromises.
+
+## Key Features
+
+- **100% Local Processing**: All AI inference runs entirely on your device
+- **Zero Data Collection**: Your conversations never leave your computer
+- **Offline Capable**: Works completely offline once you have a model
+- **Open Source**: Fully transparent, auditable codebase
+
+## Technology Stack
+
+- **Rust**: Core application logic for performance and safety
+- **Tauri v2**: Native desktop application framework
+- **Svelte 5**: Modern reactive user interface
+- **Candle**: Hugging Face's Rust ML framework for inference
+
+## Supported Models
+
+Oxide Lab supports state-of-the-art open-source model families:
+
+- Llama 3
+- Mistral / Mixtral
+- Phi-3 
+- Qwen 2.5 / Qwen 3
+- Gemma 2 / Gemma 3
+
+Supported formats: GGUF, SafeTensors
+
+## Privacy Features
+
+- No cloud dependencies
+- Zero data collection
+- Encrypted storage at rest
+- Open source transparency
+- CSP protected interface
+
+## System Requirements
+
+- RAM: 8GB minimum (16GB recommended)
+- Storage: 10GB+ for models
+- GPU: Optional but recommended for faster inference
+
+## Links
+
+- Website: https://oxidelab.tech
+- GitHub: https://github.com/FerrisMind/Oxide-Lab
+- Documentation: https://github.com/FerrisMind/Oxide-Lab#readme
+- Releases: https://github.com/FerrisMind/Oxide-Lab/releases
+
+## License
+
+Apache-2.0
+
+## Contact
+
+- Issues: https://github.com/FerrisMind/Oxide-Lab/issues

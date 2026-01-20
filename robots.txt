@@ -1,0 +1,11 @@
+# Oxide Lab - robots.txt
+# https://oxidelab.tech
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://oxidelab.tech/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

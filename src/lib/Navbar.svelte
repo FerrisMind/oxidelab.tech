@@ -36,7 +36,7 @@
     <a href="/" class="flex items-center gap-2 group" aria-label="Oxide Lab Home">
       <Logo size={36} gradientId="navbar-logo-gradient" />
       <span class="text-xl font-bold">
-        Oxide<span class="brand-gradient">Lab</span>
+        Oxide Lab
       </span>
     </a>
     

@@ -59,7 +59,7 @@
     class="relative mt-16 z-10 transition-all duration-1000 ease-out delay-300 {visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}"
   >
     <div class="absolute -inset-12 bg-gradient-radial from-red-500/20 to-transparent pointer-events-none"></div>
-    <div class="relative bg-card/95 border border-border rounded-2xl overflow-hidden shadow-2xl max-w-[1128px] w-[90vw]">
+    <div class="relative bg-card/95 border border-border rounded-4xl overflow-hidden shadow-2xl max-w-[1128px] w-[90vw]">
       <div class="bg-background">
         <img 
           src="https://raw.githubusercontent.com/FerrisMind/Oxide-Lab/main/.github/assets/screenshots/chat-dark.png" 
