@@ -1,52 +1,53 @@
 <script lang="ts">
-  const features = [
+  import { i18n } from './i18n.svelte';
+
+  const features = $derived([
     {
       icon: 'shield',
-      title: '100% Private',
-      description: 'All inference happens locally on your machine. Your conversations never leave your device — no cloud, no API calls, no data sharing.',
+      title: i18n.t.features.items[0].title,
+      description: i18n.t.features.items[0].description,
       color: '#10B981'
     },
     {
       icon: 'cpu',
-      title: 'Hardware Acceleration',
-      description: 'Native support for CUDA (NVIDIA), Metal (Apple Silicon), Intel MKL, and CPU. Optimized performance for your hardware.',
+      title: i18n.t.features.items[1].title,
+      description: i18n.t.features.items[1].description,
       color: '#1E88E5'
     },
     {
       icon: 'layers',
-      title: 'Multi-Architecture',
-      description: 'Support for Llama, Qwen, Mistral, DeepSeek, Yi, and more. Load GGUF or SafeTensors models directly.',
+      title: i18n.t.features.items[2].title,
+      description: i18n.t.features.items[2].description,
       color: '#8B5CF6'
     },
     {
       icon: 'zap',
-      title: 'Streaming Response',
-      description: 'Real-time token streaming for instant feedback. See responses as they are generated, just like cloud-based AI.',
+      title: i18n.t.features.items[3].title,
+      description: i18n.t.features.items[3].description,
       color: '#FF7F04'
     },
     {
       icon: 'globe',
-      title: 'Multi-Language UI',
-      description: 'Interface available in English, Russian, and Brazilian Portuguese. Built with i18n support for easy localisation.',
+      title: i18n.t.features.items[4].title,
+      description: i18n.t.features.items[4].description,
       color: '#22D3EE'
     },
     {
       icon: 'code',
-      title: 'Built with Rust',
-      description: 'Powered by Candle ML framework and Tauri v2. Fast, memory-efficient, and secure by design.',
+      title: i18n.t.features.items[5].title,
+      description: i18n.t.features.items[5].description,
       color: '#EE2C0B'
     }
-  ];
+  ]);
 </script>
 
 <section class="features" id="features">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Features</span>
-      <h2>Everything You Need for<br/><span class="glow-text">Private AI Conversations</span></h2>
+      <span class="section-label">{i18n.t.features.label}</span>
+      <h2>{i18n.t.features.title}<br/><span class="glow-text">{i18n.t.features.titleGlow}</span></h2>
       <p class="section-description">
-        Oxide Lab combines the power of modern LLMs with complete privacy.<br/>
-        No compromises, no subscriptions, no limits.
+        {i18n.t.features.description}
       </p>
     </div>
     
@@ -95,7 +96,7 @@
     </div>
     
     <div class="tech-stack">
-      <p class="tech-label">Built with</p>
+      <p class="tech-label">{i18n.t.features.techStack}</p>
       <div class="tech-icons">
         <a href="https://www.rust-lang.org/" target="_blank" rel="noopener noreferrer" class="tech-item" title="Rust">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg" alt="Rust" class="tech-img" />

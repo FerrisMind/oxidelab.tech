@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { i18n } from './i18n.svelte';
+
   // Model families with real icons from @lobehub/icons-static-svg
   // Icons loaded via CDN: https://unpkg.com/@lobehub/icons-static-svg@latest/icons/
   const modelFamilies = [
@@ -52,29 +54,28 @@
     }
   ];
   
-  const formats = [
+  const formats = $derived([
     {
-      name: 'GGUF',
-      description: 'Quantized models for efficient inference. Recommended for most users.',
-      badge: 'Recommended',
+      name: i18n.t.models.ggufName,
+      description: i18n.t.models.ggufDesc,
+      badge: i18n.t.models.ggufBadge,
       iconUrl: 'https://raw.githubusercontent.com/ggml-org/media/master/logo/ggml-logo.svg'
     },
     {
-      name: 'SafeTensors',
-      description: 'Full precision models from HuggingFace. Best quality, more VRAM required.',
-      iconUrl: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/huggingface-color.svg'
+      name: i18n.t.models.stName,
+      description: i18n.t.models.stDesc,
+      iconUrl: 'https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/safetensors/logo.png'
     }
-  ];
+  ]);
 </script>
 
 <section class="models" id="models">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Supported Models</span>
-      <h2>Run Any Model<br/><span class="glow-text">You Want</span></h2>
+      <span class="section-label">{i18n.t.models.label}</span>
+      <h2>{i18n.t.models.title}<br/><span class="glow-text">{i18n.t.models.titleGlow}</span></h2>
       <p class="section-description">
-        Download models from Hugging Face and load them directly.<br/>
-        Full support for the most popular open-source LLMs.
+        {i18n.t.models.description}
       </p>
     </div>
     
@@ -83,7 +84,7 @@
         {#each modelFamilies as family}
           <div class="model-family-card">
             <div class="family-header">
-              <span class="family-icon">
+              <span class="family-icon" class:large-icon={family.name === 'Gemma'}>
                 <img 
                   src={family.iconUrl} 
                   alt="{family.name} icon" 
@@ -103,12 +104,12 @@
       </div>
       
       <div class="formats-section">
-        <h3 class="formats-title">Supported Formats</h3>
+        <h3 class="formats-title">{i18n.t.models.formatsTitle}</h3>
         <div class="formats-grid">
           {#each formats as format}
             <div class="format-card">
               <div class="format-header">
-                <div class="format-icon">
+                <div class="format-icon" class:large-format-icon={format.name === i18n.t.models.ggufName}>
                   <img 
                     src={format.iconUrl} 
                     alt="{format.name} icon" 
@@ -136,7 +137,7 @@
             alt="Hugging Face" 
             class="hf-icon"
           />
-          <span>Browse Models on Hugging Face</span>
+          <span>{i18n.t.models.hfLink}</span>
           <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="5" y1="12" x2="19" y2="12"/>
             <polyline points="12 5 19 12 12 19"/>
@@ -223,6 +224,11 @@
     justify-content: center;
   }
   
+  .family-icon.large-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
   .model-icon-img {
     width: 100%;
     height: 100%;
@@ -297,6 +303,11 @@
     justify-content: center;
     color: var(--color-brand-orange);
     flex-shrink: 0;
+  }
+
+  .format-icon.large-format-icon {
+    width: 40px;
+    height: 40px;
   }
   
   .format-icon-img {

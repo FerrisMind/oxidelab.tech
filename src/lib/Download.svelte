@@ -1,25 +1,20 @@
 <script lang="ts">
+  import { i18n } from './i18n.svelte';
+
   // Real download links from GitHub Releases
   const GITHUB_RELEASES_URL = 'https://github.com/FerrisMind/Oxide-Lab/releases';
   const LATEST_VERSION = '0.10.23';
   
-  const downloads: DownloadPlatform[] = [
+  const downloads = $derived([
     {
       platform: 'Windows',
       icon: 'windows',
       versions: [
         { 
-          type: 'CPU', 
-          size: '~4 MB', 
-          link: `https://github.com/FerrisMind/Oxide-Lab/releases/download/${LATEST_VERSION}/Oxide-Lab_${LATEST_VERSION}_x64-CPU.zip`,
-          description: 'Works on any Windows system'
-        },
-        { 
-          type: 'GPU + CPU', 
-          size: '~5 MB', 
-          link: `https://github.com/FerrisMind/Oxide-Lab/releases/download/${LATEST_VERSION}/Oxide-Lab_${LATEST_VERSION}_x64-GPU%2BCPU.zip`,
-          badge: 'NVIDIA CUDA',
-          description: 'Requires NVIDIA GPU with CUDA'
+          type: 'Latest Release', 
+          size: LATEST_VERSION, 
+          link: GITHUB_RELEASES_URL,
+          description: i18n.t.download.cpuLink // "Works on any Windows system" is still relevant as a general note
         }
       ]
     },
@@ -32,7 +27,7 @@
           size: 'Coming Soon', 
           link: GITHUB_RELEASES_URL,
           badge: 'Apple Silicon',
-          description: 'M1/M2/M3 chips with Metal acceleration',
+          description: i18n.t.download.metalDesc,
           disabled: true
         }
       ],
@@ -46,19 +41,19 @@
           type: 'CPU/GPU', 
           size: 'Coming Soon', 
           link: GITHUB_RELEASES_URL,
-          description: 'Build from source available',
+          description: i18n.t.download.linuxDesc,
           disabled: true
         }
       ],
       comingSoon: true
     }
-  ];
+  ]);
   
-  const requirements: { label: string; value: string; icon: string }[] = [
-    { label: 'RAM', value: '4 GB minimum, 8+ GB recommended', icon: 'memory' },
-    { label: 'Storage', value: '100 MB + model size', icon: 'storage' },
-    { label: 'GPU (optional)', value: 'NVIDIA CUDA or Apple Metal', icon: 'gpu' }
-  ];
+  const requirementsList = $derived([
+    { label: i18n.t.download.ramLabel, value: i18n.t.download.ramValue, icon: 'memory' },
+    { label: i18n.t.download.storageLabel, value: i18n.t.download.storageValue, icon: 'storage' },
+    { label: i18n.t.download.gpuLabel, value: i18n.t.download.gpuValue, icon: 'gpu' }
+  ]);
 
   interface DownloadVersion {
     type: string;
@@ -81,11 +76,10 @@
 <section class="download" id="download">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Download</span>
-      <h2>Get Oxide Lab<br/><span class="glow-text">For Free</span></h2>
+      <span class="section-label">{i18n.t.download.label}</span>
+      <h2>{i18n.t.download.title}<br/><span class="glow-text">{i18n.t.download.titleGlow}</span></h2>
       <p class="section-description">
-        Open source under Apache-2.0 license.<br/>
-        Version {LATEST_VERSION} — Latest stable release
+        {i18n.t.download.description.replace('{version}', LATEST_VERSION)}
       </p>
     </div>
     
@@ -121,19 +115,19 @@
               <a 
                 href={version.link} 
                 class="version-item"
-                class:disabled={version.disabled}
-                target={version.disabled ? undefined : "_blank"}
-                rel={version.disabled ? undefined : "noopener noreferrer"}
+                class:disabled={(version as DownloadVersion).disabled}
+                target={(version as DownloadVersion).disabled ? undefined : "_blank"}
+                rel={(version as DownloadVersion).disabled ? undefined : "noopener noreferrer"}
               >
                 <div class="version-info">
                   <span class="version-type">{version.type}</span>
-                  {#if version.badge}
-                    <span class="version-badge">{version.badge}</span>
+                  {#if (version as DownloadVersion).badge}
+                    <span class="version-badge">{(version as DownloadVersion).badge}</span>
                   {/if}
                 </div>
                 <div class="version-meta">
                   <span class="version-size">{version.size}</span>
-                  {#if !version.disabled}
+                  {#if !(version as DownloadVersion).disabled}
                     <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7 10 12 15 17 10"/>
@@ -160,15 +154,14 @@
         </svg>
       </div>
       <div class="warning-content">
-        <strong>Windows Users:</strong> If you see a "SmartScreen" warning, click <em>More Info → Run Anyway</em>. 
-        This is a known false-positive for new open-source projects.
+        {@html i18n.t.download.smartscreenWarning.replace('More Info → Run Anyway', '<em>More Info → Run Anyway</em>')}
       </div>
     </div>
     
     <div class="requirements">
-      <h3 class="requirements-title">System Requirements</h3>
+      <h3 class="requirements-title">{i18n.t.download.requirements}</h3>
       <div class="requirements-grid">
-        {#each requirements as req}
+        {#each requirementsList as req}
           <div class="requirement-item">
             <div class="requirement-icon">
               {#if req.icon === 'memory'}
@@ -201,11 +194,7 @@
     
     <div class="build-notice">
       <p>
-        Want to build from source or need a different platform? Check the 
-        <a href="https://github.com/FerrisMind/Oxide-Lab#readme" target="_blank" rel="noopener noreferrer">
-          GitHub repository
-        </a> 
-        for build instructions.
+        {@html i18n.t.download.buildNotice.replace('GitHub repository', '<a href="https://github.com/FerrisMind/Oxide-Lab#readme" target="_blank" rel="noopener noreferrer">GitHub repository</a>')}
       </p>
     </div>
   </div>
@@ -416,7 +405,7 @@
     line-height: 1.6;
   }
   
-  .warning-content strong {
+  .warning-content :global(strong) {
     color: var(--color-warning);
   }
   
@@ -496,7 +485,7 @@
     color: var(--color-muted-foreground);
   }
   
-  .build-notice a {
+  .build-notice :global(a) {
     color: var(--color-brand-orange);
     text-decoration: underline;
   }

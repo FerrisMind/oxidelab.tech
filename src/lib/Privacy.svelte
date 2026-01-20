@@ -1,37 +1,38 @@
 <script lang="ts">
-  const privacyFeatures = [
+  import { i18n } from './i18n.svelte';
+
+  const privacyFeatures = $derived([
     {
-      title: 'Zero Data Collection',
-      description: 'We don\'t collect any telemetry, usage data, or analytics. Your activity stays on your machine.',
+      title: i18n.t.privacy.features[0].title,
+      description: i18n.t.privacy.features[0].description,
       icon: 'eye-off'
     },
     {
-      title: 'No Internet Required',
-      description: 'Once you have a model, Oxide Lab works completely offline. No network requests for inference.',
+      title: i18n.t.privacy.features[1].title,
+      description: i18n.t.privacy.features[1].description,
       icon: 'wifi-off'
     },
     {
-      title: 'Local Storage Only',
-      description: 'Conversations and settings are stored locally in encrypted SQLite databases.',
+      title: i18n.t.privacy.features[2].title,
+      description: i18n.t.privacy.features[2].description,
       icon: 'database'
     },
     {
-      title: 'CSP Protected',
-      description: 'Content Security Policy prevents any external scripts or connections from running.',
+      title: i18n.t.privacy.features[3].title,
+      description: i18n.t.privacy.features[3].description,
       icon: 'lock'
     }
-  ];
+  ]);
 </script>
 
 <section class="privacy" id="privacy">
   <div class="container">
     <div class="privacy-layout">
       <div class="privacy-content">
-        <span class="section-label">Privacy & Security</span>
-        <h2>Your Data Stays<br/><span class="glow-text">With You</span></h2>
+        <span class="section-label">{i18n.t.privacy.label}</span>
+        <h2>{i18n.t.privacy.title}<br/><span class="glow-text">{i18n.t.privacy.titleGlow}</span></h2>
         <p class="privacy-description">
-          In a world where every AI service wants your data, Oxide Lab takes a different approach. 
-          Your conversations are yours — we never see them, never store them, never train on them.
+          {i18n.t.privacy.description}
         </p>
         
         <div class="privacy-features">

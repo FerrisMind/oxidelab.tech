@@ -1,12 +1,14 @@
 <script lang="ts">
+  import { i18n } from './i18n.svelte';
+
   const currentYear = new Date().getFullYear();
   
-  const links = {
+  const links = $derived({
     product: [
-      { label: 'Features', href: '#features' },
-      { label: 'Models', href: '#models' },
-      { label: 'Privacy', href: '#privacy' },
-      { label: 'Download', href: '#download' }
+      { label: i18n.t.nav.features, href: '#features' },
+      { label: i18n.t.nav.models, href: '#models' },
+      { label: i18n.t.nav.privacy, href: '#privacy' },
+      { label: i18n.t.nav.download, href: '#download' }
     ],
     resources: [
       { label: 'Documentation', href: 'https://github.com/FerrisMind/Oxide-Lab#readme' },
@@ -18,7 +20,7 @@
       { label: 'License (Apache-2.0)', href: 'https://github.com/FerrisMind/Oxide-Lab/blob/main/LICENSE' },
       { label: 'Third Party Licenses', href: 'https://github.com/FerrisMind/Oxide-Lab/blob/main/THIRD_PARTY_LICENSES.md' }
     ]
-  };
+  });
 </script>
 
 <footer class="footer">
@@ -42,8 +44,7 @@
           <span class="logo-text">Oxide<span class="logo-accent">Lab</span></span>
         </a>
         <p class="brand-description">
-          Private AI chat application with local LLM support. 
-          Built with Rust, Tauri, and Svelte.
+          {i18n.t.footer.description}
         </p>
         <div class="social-links">
           <a 
@@ -62,7 +63,7 @@
       
       <div class="footer-links">
         <div class="link-group">
-          <h4>Product</h4>
+          <h4>{i18n.t.footer.product}</h4>
           <ul>
             {#each links.product as link}
               <li>
@@ -73,7 +74,7 @@
         </div>
         
         <div class="link-group">
-          <h4>Resources</h4>
+          <h4>{i18n.t.footer.resources}</h4>
           <ul>
             {#each links.resources as link}
               <li>
@@ -84,7 +85,7 @@
         </div>
         
         <div class="link-group">
-          <h4>Legal</h4>
+          <h4>{i18n.t.footer.legal}</h4>
           <ul>
             {#each links.legal as link}
               <li>
@@ -98,10 +99,10 @@
     
     <div class="footer-bottom">
       <p class="copyright">
-        © {currentYear} FerrisMind. Released under Apache-2.0 license.
+        © {currentYear} FerrisMind. {i18n.t.footer.license}
       </p>
       <p class="credits">
-        Built with 
+        {i18n.t.footer.builtWith} 
         <a href="https://www.rust-lang.org/" target="_blank" rel="noopener noreferrer">Rust</a>, 
         <a href="https://tauri.app/" target="_blank" rel="noopener noreferrer">Tauri</a>, and 
         <a href="https://svelte.dev/" target="_blank" rel="noopener noreferrer">Svelte</a>

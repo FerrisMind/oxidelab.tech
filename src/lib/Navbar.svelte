@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { i18n } from './i18n.svelte';
+
   let scrolled = $state(false);
   let mobileMenuOpen = $state(false);
   
@@ -11,12 +13,12 @@
     return () => window.removeEventListener('scroll', handleScroll);
   });
   
-  const navLinks = [
-    { href: '#features', label: 'Features' },
-    { href: '#models', label: 'Models' },
-    { href: '#privacy', label: 'Privacy' },
-    { href: '#download', label: 'Download' },
-  ];
+  const navLinks = $derived([
+    { href: '#features', label: i18n.t.nav.features },
+    { href: '#models', label: i18n.t.nav.models },
+    { href: '#privacy', label: i18n.t.nav.privacy },
+    { href: '#download', label: i18n.t.nav.download },
+  ]);
 </script>
 
 <header class="navbar" class:scrolled>
@@ -51,11 +53,38 @@
     </nav>
     
     <div class="nav-actions">
+      <div class="lang-switcher">
+        <button 
+          class="lang-btn" 
+          class:active={i18n.currentLocale === 'en'} 
+          onclick={() => i18n.setLocale('en')}
+          title="English"
+        >
+          EN
+        </button>
+        <button 
+          class="lang-btn" 
+          class:active={i18n.currentLocale === 'ru'} 
+          onclick={() => i18n.setLocale('ru')}
+          title="Русский"
+        >
+          RU
+        </button>
+        <button 
+          class="lang-btn" 
+          class:active={i18n.currentLocale === 'pt-BR'} 
+          onclick={() => i18n.setLocale('pt-BR')}
+          title="Português"
+        >
+          PT
+        </button>
+      </div>
+
       <a 
         href="https://github.com/FerrisMind/Oxide-Lab" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="btn btn-ghost"
+        class="btn btn-ghost github-btn"
         aria-label="View on GitHub"
       >
         <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
@@ -63,8 +92,8 @@
         </svg>
         <span class="btn-text">GitHub</span>
       </a>
-      <a href="#download" class="btn btn-primary">
-        Download
+      <a href="#download" class="btn btn-primary download-btn">
+        {i18n.t.nav.download}
       </a>
     </div>
     
@@ -172,6 +201,36 @@
     gap: var(--space-md);
   }
   
+  .lang-switcher {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    margin-right: var(--space-sm);
+  }
+  
+  .lang-btn {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-muted-foreground);
+    border: none;
+    background: transparent;
+    border-radius: calc(var(--radius-lg) - 2px);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  
+  .lang-btn:hover {
+    color: var(--color-foreground);
+  }
+  
+  .lang-btn.active {
+    background: var(--color-brand-orange);
+    color: white;
+  }
+  
   .icon {
     width: 20px;
     height: 20px;
@@ -253,6 +312,10 @@
     }
     
     .nav-actions .btn-text {
+      display: none;
+    }
+
+    .github-btn {
       display: none;
     }
     
