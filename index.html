@@ -26,6 +26,142 @@
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- JSON-LD Structured Data: BreadcrumbList (Navigation Chain) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://oxidelab.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Возможности",
+          "item": "https://oxidelab.tech/#features"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Модели",
+          "item": "https://oxidelab.tech/#models"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Приватность",
+          "item": "https://oxidelab.tech/#privacy"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Скачать",
+          "item": "https://oxidelab.tech/#download"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- JSON-LD Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Oxide Lab",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB"
+      },
+      "description": "Private desktop AI Chat with Local LLM Support. Run large language models locally with complete privacy.",
+      "url": "https://oxidelab.tech/",
+      "downloadUrl": "https://github.com/FerrisMind/Oxide-Lab/releases",
+      "author": {
+        "@type": "Organization",
+        "name": "FerrisMind"
+      },
+      "license": "https://opensource.org/licenses/Apache-2.0"
+    }
+    </script>
+    
+    <!-- JSON-LD Structured Data: WebSite with Search Action -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Oxide Lab",
+      "url": "https://oxidelab.tech/",
+      "description": "Private desktop AI Chat with Local LLM Support",
+      "inLanguage": ["ru", "en", "pt"]
+    }
+    </script>
+    
+    <!-- JSON-LD Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "FerrisMind",
+      "url": "https://github.com/FerrisMind",
+      "logo": "https://oxidelab.tech/favicon.svg",
+      "sameAs": [
+        "https://github.com/FerrisMind/Oxide-Lab"
+      ]
+    }
+    </script>
+    
+    <!-- JSON-LD Structured Data: SiteNavigationElement for Quick Links -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Site Navigation",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "Возможности",
+          "description": "Технологии и функциональность Oxide Lab",
+          "url": "https://oxidelab.tech/#features"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "Модели",
+          "description": "Поддерживаемые AI модели",
+          "url": "https://oxidelab.tech/#models"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "Приватность",
+          "description": "Защита данных и безопасность",
+          "url": "https://oxidelab.tech/#privacy"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "Скачать",
+          "description": "Загрузка Oxide Lab для Windows, macOS, Linux",
+          "url": "https://oxidelab.tech/#download"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "GitHub",
+          "description": "Исходный код и документация",
+          "url": "https://github.com/FerrisMind/Oxide-Lab"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="app"></div>
