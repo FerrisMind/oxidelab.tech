@@ -30,7 +30,7 @@
     {
       name: 'Yi',
       versions: ['Yi-6B', 'Yi-34B', 'Yi-1.5'],
-      iconUrl: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/yi-color.svg'
+      iconUrl: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/yi.svg'
     },
     {
       name: 'Gemma',
@@ -45,7 +45,7 @@
     {
       name: 'SmolLM',
       versions: ['SmolLM2'],
-      iconUrl: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/huggingface.svg'
+      iconUrl: 'https://unpkg.com/@lobehub/icons-static-svg@latest/icons/huggingface-color.svg'
     }
   ];
   
@@ -89,7 +89,7 @@
               <img 
                 src={family.iconUrl} 
                 alt="{family.name} icon" 
-                class="w-7 h-7 object-contain"
+                class="w-9 h-9 object-contain {family.name === 'Yi' ? 'invert' : ''}"
                 loading="lazy"
               />
               <CardTitle class="text-lg">{family.name}</CardTitle>
