@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
-	import CircleIcon from "@lucide/svelte/icons/circle";
+	import Circle from "phosphor-svelte/lib/Circle";
 	import { cn, type WithoutChild } from "$lib/utils";
 
 	let {
@@ -25,7 +25,7 @@
 			class="pointer-events-none absolute start-2 flex size-3.5 items-center justify-center"
 		>
 			{#if checked}
-				<CircleIcon class="size-2 fill-current" />
+				<Circle size={8} weight="fill" class="size-2 fill-current" />
 			{/if}
 		</span>
 		{@render childrenProp?.({ checked })}

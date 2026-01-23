@@ -43,7 +43,7 @@
       .then(() => {
         isLoading = false;
       })
-      .catch((error) => {
+      .catch((error: unknown) => {
         console.error('Failed to load Spline scene:', error);
         hasError = true;
         isLoading = false;

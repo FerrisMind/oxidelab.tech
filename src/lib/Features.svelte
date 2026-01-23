@@ -69,11 +69,11 @@
       {#each features as feature (feature.title)}
         <Card class="hover:-translate-y-1 transition-all duration-300 hover:border-primary/50 cursor-pointer">
           <CardHeader>
-            <div class="flex items-center gap-3 mb-3">
+            <div class="flex items-center gap-3 mb-3 min-w-0">
               <div class="w-10 h-10 flex items-center justify-center {feature.color} flex-shrink-0">
                 <feature.icon size={28} weight="duotone" />
               </div>
-              <CardTitle class="text-xl">{feature.title}</CardTitle>
+              <CardTitle class="text-xl min-w-0">{feature.title}</CardTitle>
             </div>
             <CardDescription class="text-base leading-relaxed">{feature.description}</CardDescription>
           </CardHeader>

@@ -85,16 +85,16 @@
       {#each modelFamilies as family (family.name)}
         <Card class="hover:-translate-y-1 transition-all duration-300 hover:border-primary/50 cursor-pointer">
           <CardHeader class="pb-3">
-            <div class="flex items-center gap-3 mb-3">
+            <div class="flex items-center gap-3 mb-3 min-w-0">
               <img 
                 src={family.iconUrl} 
                 alt="{family.name} icon" 
-                class="w-9 h-9 object-contain {family.name === 'Yi' ? 'invert' : ''}"
+                class="w-9 h-9 object-contain flex-shrink-0 {family.name === 'Yi' ? 'invert' : ''}"
                 loading="lazy"
               />
-              <CardTitle class="text-lg">{family.name}</CardTitle>
+              <CardTitle class="text-lg min-w-0">{family.name}</CardTitle>
             </div>
-            <div class="flex flex-wrap gap-1.5">
+            <div class="flex flex-wrap gap-1.5 min-w-0">
               {#each family.versions as version}
                 <Badge variant="secondary" class="text-xs font-normal">{version}</Badge>
               {/each}
@@ -111,15 +111,15 @@
         {#each formats as format (format.name)}
           <Card class="hover:border-primary/50 transition-colors cursor-pointer text-left">
             <CardHeader>
-              <div class="flex items-center gap-3 mb-2">
+              <div class="flex items-center gap-3 mb-2 min-w-0">
                 <img 
                   src={format.iconUrl} 
                   alt="{format.name} icon" 
-                  class="w-10 h-10 object-contain dark:invert"
+                  class="w-10 h-10 object-contain dark:invert flex-shrink-0"
                   loading="lazy"
                 />
-                <div class="flex items-center gap-2">
-                  <CardTitle class="text-xl">{format.name}</CardTitle>
+                <div class="flex items-center gap-2 min-w-0">
+                  <CardTitle class="text-xl min-w-0">{format.name}</CardTitle>
                   {#if format.badge}
                     <Badge class="bg-green-500/20 text-green-500 border-green-500/30">{format.badge}</Badge>
                   {/if}

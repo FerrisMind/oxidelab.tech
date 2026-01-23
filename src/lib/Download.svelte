@@ -92,12 +92,12 @@
       {#each downloads as platform (platform.platform)}
         <Card class="{platform.comingSoon ? 'opacity-70' : 'hover:border-primary/50'} transition-all">
           <CardHeader class="border-b border-border pb-4">
-            <div class="flex items-center gap-3">
-              <div class="w-6 h-6 text-primary">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-6 h-6 text-primary flex-shrink-0">
                 <platform.icon size={24} weight="fill" />
               </div>
-              <div class="flex flex-col gap-1">
-                <CardTitle class="text-xl">{platform.platform}</CardTitle>
+              <div class="flex flex-col gap-1 min-w-0">
+                <CardTitle class="text-xl min-w-0">{platform.platform}</CardTitle>
                 {#if platform.comingSoon}
                   <Badge variant="secondary" class="text-xs w-fit">Coming Soon</Badge>
                 {/if}
@@ -151,11 +151,11 @@
         {#each requirementsList as req (req.label)}
           <Card class="hover:-translate-y-1 transition-all duration-300 hover:border-primary/50 cursor-pointer">
             <CardHeader>
-              <div class="flex items-center gap-3 mb-3">
+              <div class="flex items-center gap-3 mb-3 min-w-0">
                 <div class="w-10 h-10 flex items-center justify-center text-primary flex-shrink-0">
                   <req.icon size={28} weight="duotone" />
                 </div>
-                <CardTitle class="text-xl">{req.label}</CardTitle>
+                <CardTitle class="text-xl min-w-0">{req.label}</CardTitle>
               </div>
               <CardDescription class="text-base leading-relaxed text-left">{req.value}</CardDescription>
             </CardHeader>
