@@ -1,9 +1,10 @@
 import { mount } from 'svelte'
-import { injectSpeedInsights } from '@vercel/speed-insights'
 import './app.css'
 import App from './App.svelte'
 
-injectSpeedInsights();
+if (typeof window !== 'undefined' && window.location.hostname.endsWith('vercel.app')) {
+  import('@vercel/speed-insights').then(({ injectSpeedInsights }) => injectSpeedInsights());
+}
 
 const app = mount(App, {
   target: document.getElementById('app')!,

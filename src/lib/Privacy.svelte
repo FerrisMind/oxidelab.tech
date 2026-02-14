@@ -77,7 +77,7 @@
             {/snippet}
             
             <ThreeLogo 
-              modelUrl="/model.glb"
+              modelUrl={import.meta.env.BASE_URL + 'model.glb'}
               width={400}
               height={400}
               autoRotateSpeed={2}

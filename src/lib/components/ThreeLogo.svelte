@@ -23,8 +23,9 @@
     fallback?: Snippet;
   }
 
+  const baseUrl = typeof import.meta !== 'undefined' && import.meta.env?.BASE_URL != null ? import.meta.env.BASE_URL : './';
   let { 
-    modelUrl = './model.glb',
+    modelUrl = `${baseUrl}model.glb`,
     width = 300, 
     height = 300,
     class: className = '',
@@ -147,7 +148,7 @@
         
         // Load oxide texture for Shape_2
         const textureLoader = new THREE.TextureLoader();
-        const oxideTexture = textureLoader.load('/oxide-texture.png');
+        const oxideTexture = textureLoader.load(`${baseUrl}oxide-texture.png`);
         oxideTexture.wrapS = THREE.RepeatWrapping;
         oxideTexture.wrapT = THREE.RepeatWrapping;
         oxideTexture.repeat.set(1, 1);
