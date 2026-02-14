@@ -24,7 +24,7 @@
   }
 
   let { 
-    modelUrl = '/model.glb',
+    modelUrl = './model.glb',
     width = 300, 
     height = 300,
     class: className = '',
@@ -267,3 +267,4 @@
     cursor: grabbing;
   }
 </style>
+
