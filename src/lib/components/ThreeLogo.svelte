@@ -63,21 +63,28 @@
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     container.appendChild(renderer.domElement);
     
-    // Lighting - balanced for saturated colors
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+    // Равномерное освещение со всех сторон — без тёмной стороны при вращении
+    const ambientLight = new THREE.AmbientLight(0xffffff, 2);
     scene.add(ambientLight);
-    
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-    directionalLight.position.set(5, 5, 5);
-    scene.add(directionalLight);
-    
-    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
-    directionalLight2.position.set(-5, -5, 5);
-    scene.add(directionalLight2);
-    
-    const frontLight = new THREE.DirectionalLight(0xffffff, 2);
-    frontLight.position.set(0, 0, 10);
-    scene.add(frontLight);
+
+    const intensity = 1.2;
+    const dist = 8;
+
+    // Спереди слева и справа
+    const frontLeft = new THREE.DirectionalLight(0xffffff, intensity);
+    frontLeft.position.set(-dist, dist * 0.5, dist);
+    scene.add(frontLeft);
+    const frontRight = new THREE.DirectionalLight(0xffffff, intensity);
+    frontRight.position.set(dist, dist * 0.5, dist);
+    scene.add(frontRight);
+
+    // Сзади слева и справа (чтобы при повороте вторая сторона тоже была освещена)
+    const backLeft = new THREE.DirectionalLight(0xffffff, intensity);
+    backLeft.position.set(-dist, dist * 0.5, -dist);
+    scene.add(backLeft);
+    const backRight = new THREE.DirectionalLight(0xffffff, intensity);
+    backRight.position.set(dist, dist * 0.5, -dist);
+    scene.add(backRight);
     
     // Controls
     let controls: OrbitControls | null = null;
@@ -162,19 +169,19 @@
             console.log('[ThreeLogo] Mesh', meshCount, meshName);
             
             if (meshName === 'Shape_2') {
-              // Metallic armor with texture
+              // Текстура без бликов (матовый вид)
               child.material = new THREE.MeshStandardMaterial({
                 map: oxideTexture,
-                metalness: 0.5,
-                roughness: 0.3,
+                metalness: 1,
+                roughness: 0.5,
                 side: THREE.DoubleSide,
               });
             } else {
-              // Blue parts - saturated blue
+              // Синие части без бликов (матовый вид)
               child.material = new THREE.MeshStandardMaterial({
                 color: 0x1E88E5,
-                metalness: 0.3,
-                roughness: 0.4,
+                metalness: 1,
+                roughness: 0.5,
                 side: THREE.DoubleSide,
               });
             }
